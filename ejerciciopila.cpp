@@ -8,22 +8,23 @@ private:
     T* top = NULL;
 
 public:
-    Pila() {
-        top = arr;
-    }
-
+    
     void push(T valor) {
-        if (top == arr + 10) {
+        if (top == NULL) {
+            top = arr;
+            *top = valor;
+        }
+        else if (top == arr + 10) {
             cout << "La pila está llena. No se puede insertar " << valor << endl;
         }
         else {
-
+            top++;
+          
             for (T* ptr = top; ptr > arr; --ptr) {
                 *ptr = *(ptr - 1);
             }
 
             *arr = valor;
-            top++;
             cout << "Se inserto: " << valor << endl;
         }
     }
@@ -48,10 +49,12 @@ public:
     }
 
     void imprimir() {
-        for (T* ptr = arr; ptr < top; ++ptr) {
-            cout << *ptr << "-->";
+        cout << "Pila -> ";
+        for (T* p = arr; Top && p <= Top; p++) {
+            cout << *p << " -> ";
         }
-        cout << endl;
+        cout << "end;" << endl;
+
     }
 };
 int main() {
